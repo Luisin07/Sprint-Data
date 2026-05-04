@@ -4,6 +4,19 @@
 
 ---
 
+## Equipe
+
+| Nome | RM |
+|---|---|
+| Maria Fernanda Garavelli | RM562686 |
+| Rogério Deligi | RM561942 |
+| Vitor Barbosa de Paiva | RM565303 |
+| Arthur Traldi Felix | RM563477 |
+| Lucas Andrade de Souza | RM564066 |
+| Luis Otavio Santini | RM563556 |
+
+---
+
 ## Sobre o Projeto
 
 Solução de Data Science desenvolvida para a Motiva/CCR com foco no monitoramento automatizado de vegetação ao longo do **Rodoanel Mário Covas (SP-021 Oeste)**, cobrindo do KM 0 ao KM 29+300.
@@ -18,16 +31,16 @@ Atualmente, o monitoramento depende de inspeções manuais periódicas registrad
 
 ## Formulação Data Science
 
-```
+\`\`\`
 f(X) → y
-```
+\`\`\`
 
 | Componente | Descrição |
 |---|---|
 | **X (features)** | Tipo de área, posição (KM), nível anterior (T1), flag interna/externa, intervalo em dias |
 | **y (target)** | Nível em T2 — multiclasse {1, 2, 3} ou binário {crítico / não-crítico} |
 | **Tarefa** | Classificação supervisionada |
-| **Modelo base** | Random Forest com `class_weight='balanced'` |
+| **Modelo base** | Random Forest com SMOTE para balanceamento de classes |
 
 ---
 
@@ -43,14 +56,14 @@ f(X) → y
 
 ## Estrutura do Repositório
 
-```
+\`\`\`
 Sprint-Data/
-├── RA-RET-ROÇ-LIMP-2026-03-13.xlsx   # Levantamento 13/03/2026
-├── RA-RET-ROÇ-LIMP-2026-03-20.xlsx   # Levantamento 20/03/2026
-├── Challenge_Motiva_Sprint1_EDA.ipynb # Notebook com EDA e pré-processamento
-├── Documento_Solucao_Motiva_Sprint1.docx  # Documento técnico (2 páginas)
+├── RA-RET-ROÇ-LIMP-2026-03-13.xlsx        # Levantamento 13/03/2026
+├── RA-RET-ROÇ-LIMP-2026-03-20.xlsx        # Levantamento 20/03/2026
+├── Challenge_Motiva_Sprint1_EDA.ipynb      # Notebook com EDA e pré-processamento
+├── Documento_Solucao_Motiva_Sprint1.docx   # Documento técnico (2 páginas)
 └── README.md
-```
+\`\`\`
 
 ---
 
@@ -58,12 +71,12 @@ Sprint-Data/
 
 O notebook baixa os dados automaticamente do GitHub — nenhum arquivo externo necessário.
 
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn openpyxl requests
+\`\`\`bash
+pip install pandas numpy matplotlib seaborn scikit-learn openpyxl requests imbalanced-learn
 jupyter notebook Challenge_Motiva_Sprint1_EDA.ipynb
-```
+\`\`\`
 
-Ou abra direto no **Google Colab** clicando no badge abaixo:
+Ou abra direto no **Google Colab**:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Luisin07/Sprint-Data/blob/main/Challenge_Motiva_Sprint1_EDA.ipynb)
 
@@ -77,7 +90,8 @@ Ou abra direto no **Google Colab** clicando no badge abaixo:
 4. Matriz de transição T1 → T2
 5. Análise de qualidade dos dados
 6. Pré-processamento e feature engineering
-7. Teste inicial com Random Forest
+7. Balanceamento de classes com SMOTE
+8. Teste inicial com Random Forest — com e sem SMOTE
 
 ---
 
